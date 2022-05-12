@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # foxbel-music
 
 ## Project setup
@@ -17,3 +18,7 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# Foxbel-music
+An application for search, create playlist and listen music
+>>>>>>> 7bb0c90d9df48710b5aa35b046847a43144be25b
