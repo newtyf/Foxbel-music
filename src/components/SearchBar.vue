@@ -1,5 +1,10 @@
 <template>
   <div id="search">
+    <button class="buttonMenu">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </button>
     <div class="search-input">
       <div class="input">
         <input type="text" placeholder="Buscar...">

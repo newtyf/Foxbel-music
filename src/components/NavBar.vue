@@ -1,5 +1,6 @@
 <template>
-  <div id="nav">
+  <div id="navBar">
+    <div id="nav">
     <div class="logo">
       <img src="@/assets/foxbel-music.png" alt="" >
     </div>
@@ -24,6 +25,7 @@
         </ul>
       </div>
     </nav>
+    </div>
   </div>
 </template>
 

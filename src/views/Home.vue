@@ -5,7 +5,7 @@
       <div class="content">
         <SearchBar />
         <div class="banner-music">
-          
+          <p>aaaa</p>
         </div>
       </div>
     </div>

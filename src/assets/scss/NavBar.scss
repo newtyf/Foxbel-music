@@ -5,9 +5,6 @@
   background-color: #662323;
   padding: 15px;
   font-size: 17px;
-  @include mobile {
-    display: none;
-  }
   .logo {
     display: flex;
     align-items: center;

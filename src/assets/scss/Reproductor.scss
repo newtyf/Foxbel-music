@@ -37,6 +37,11 @@
       margin: 0 2px;
       border-radius: 50%;
       transition: 0.5s;
+      @include mobile {
+        height: 40px;
+        width: 40px;
+        margin: 0 10px;
+      }
       &.fondo {
         background-color: #FF7676;
       }
@@ -62,6 +67,9 @@
     display: flex;
     align-items: center;
     padding-right: 15px;
+    @include mobile {
+      display: none;
+    }
     .boton_efecto {
       opacity:0;
       position: absolute;
