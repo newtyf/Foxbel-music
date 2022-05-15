@@ -1,0 +1,20 @@
+$mobile-width: 768px;
+$desktop-width: 1200px;
+
+@mixin horizontal {
+    @media (orientation: landscape) {
+      @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$mobile-width + 1}) {
+      @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+}

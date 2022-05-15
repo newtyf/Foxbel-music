@@ -1,8 +1,13 @@
 <template>
   <div id="home">
-    <Navbar />
-    <div class="home_content">
-      
+    <div id="home_content">
+      <Navbar />
+      <div class="content">
+        <SearchBar />
+        <div class="banner-music">
+          
+        </div>
+      </div>
     </div>
     <Reproductor />
   </div>
@@ -14,13 +19,15 @@
 import Navbar from '@/components/NavBar.vue'
 import Reproductor from '@/components/Reproductor.vue'
 import CardMusic from '@/components/cardMusic.vue'
+import SearchBar from '@/components/SearchBar.vue'
 
 export default {
   name: 'Home',
   components: {
     Navbar,
     Reproductor,
-    CardMusic
+    CardMusic,
+    SearchBar
   }
 }
 </script>
