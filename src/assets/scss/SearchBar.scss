@@ -28,7 +28,7 @@
         position: relative;
         transition: all 400ms ease;
       }
-      &:focus {
+      &.check {
         :nth-child(1) {
           transform: rotate(140deg);
           top: 10px;

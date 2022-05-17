@@ -1,6 +1,6 @@
 <template>
   <div id="search">
-    <button class="buttonMenu">
+    <button class="buttonMenu" :class="{'check': mostrarNav}" @click="mostrarNavegacion">
       <div class="bar"></div>
       <div class="bar"></div>
       <div class="bar"></div>
@@ -23,8 +23,15 @@
 </template>
 
 <script>
-export default {
+import {mapState, mapActions} from "vuex"
 
+export default {
+  computed: {
+    ...mapState(['mostrarNav'])
+  },
+  methods: {
+    ...mapActions(['mostrarNavegacion'])
+  }
 }
 </script>
 

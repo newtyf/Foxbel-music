@@ -4,8 +4,13 @@
       <Navbar />
       <div class="content">
         <SearchBar />
-        <div class="banner-music">
-          <p>aaaa</p>
+        <div class="main">
+          <div class="banner-music">
+            <p>aaaa</p>
+          </div>
+          <div class="musicaCards">
+            
+          </div>
         </div>
       </div>
     </div>

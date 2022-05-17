@@ -1,6 +1,6 @@
 <template>
-  <div id="navBar">
-    <div id="nav">
+  <nav id="navBar">
+    <div id="nav" :class="{'selected' : mostrarNav}">
     <div class="logo">
       <img src="@/assets/foxbel-music.png" alt="" >
     </div>
@@ -26,11 +26,20 @@
       </div>
     </nav>
     </div>
-  </div>
+    <div class="fondoNav" :class="{'mostrar' : mostrarNav}" @click="mostrarNavegacion">
+      
+    </div>
+  </nav>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
-
+  computed: {
+    ...mapState(['mostrarNav'])
+  },
+  methods: {
+    ...mapActions(['mostrarNavegacion'])
+  }
 }
 </script>

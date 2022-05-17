@@ -50,3 +50,16 @@
   }
   }
 }
+
+.fondoNav {
+  &.mostrar {
+    transition: all 400ms;
+    @include mobile {
+      width: 100vw;
+      position: absolute;
+      height: 90vh;
+      background-color: rgba(14, 14, 14, 0.274);
+      z-index: 1;
+    }
+  }
+}

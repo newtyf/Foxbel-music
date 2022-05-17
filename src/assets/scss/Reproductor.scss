@@ -48,6 +48,10 @@
       img {
         height: 35px;
         cursor: pointer;
+        @include mobile {
+          height: 25px;
+          margin: 0 10px;
+        }
       }
     }
     @keyframes fondo {

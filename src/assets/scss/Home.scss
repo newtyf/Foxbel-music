@@ -9,6 +9,12 @@
     width: 100%;
     height: inherit;
     background-color: #fff;
+    .main {
+      padding: 15px;
+      .banner-music {
+        
+      }
+    }
   }
 }
 
@@ -28,9 +34,9 @@
     @include mobile {
       position: absolute;
       left: -999px;
+      transition: all 400ms ease-in-out;
       &.selected {
         left: 0;
-        transition: 200ms;
       }
     }
   }

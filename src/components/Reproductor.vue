@@ -33,12 +33,16 @@
 </template>
 
 <script>
+
+import song from '/src/assets/music/ASAN - 7 Digitos (Primera version) _ Letra adelanto(MP3_128K).mp3'
+
 export default {
   data() {
     return {
-      volumen: 40,
+      volumen: 0,
       mute: false,
       play: false,
+      audio: new Audio(song)
     }
   },
   methods: {
@@ -50,6 +54,9 @@ export default {
       imagen.addEventListener("animationend", ()=> {
         imagen.classList.remove('efecto')
       }, false);
+
+      this.audio.muted = this.mute
+
     },
     controls(position) {
       const Allcontrols = document.getElementsByClassName('efecto')
@@ -62,6 +69,13 @@ export default {
         controlsplay.classList.add('fondo')
         const controlspause = document.getElementsByClassName('efecto')[2]
         controlspause.classList.add('fondo')
+        if (position == 2) {
+          this.audio.play();
+        }
+        if (position == 1) {
+          this.audio.pause()
+        }
+
       }
       else {
       const controls = document.getElementsByClassName('efecto')[position]
@@ -69,6 +83,21 @@ export default {
       controls.classList.add('fondo')
       }
     },
+  },
+  watch: {
+    volumen() {
+      this.audio.volume = this.volumen /100
+    }
+  },
+  created() {
+    if (navigator.userAgent.includes('Android')) {
+      this.volumen = 100
+    }
+
+    if (navigator.userAgent.includes('Windows')) {
+      this.volumen = 10
+    }
+    this.audio.volume = this.volumen/100
   },
 }
 </script>
