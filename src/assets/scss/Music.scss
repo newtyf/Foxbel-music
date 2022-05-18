@@ -7,6 +7,10 @@
   flex-direction: column;
   height: 250px;
   width: 200px;
+  @include mobile {
+    height: 200px;
+    width: 150px;
+  }
   .options {
     position: absolute;
     top: 5px;
@@ -26,8 +30,10 @@
     align-items: center;
     justify-content: center;
     background-color: #000;
+    height: inherit;
     cursor: pointer;
     img {
+      object-fit: contain;
       width: 100%;
       height: 100%;
     }

@@ -1,10 +1,10 @@
 <template>
   <div id="reproductor">
     <div class="cancion">
-      <img :src="current.image" alt="image of the singer">
+      <img :src="cancionActual.image" alt="image of the singer">
       <div class="cancion_titulo">
-        <p class="song">{{current.song}}</p>
-        <p class="singer">{{current.singer}} - {{current.album}}</p>
+        <p class="song">{{cancionActual.song}}</p>
+        <p class="singer">{{cancionActual.singer}} - {{cancionActual.album}}</p>
       </div>
     </div>
     <div class="controls">
@@ -40,18 +40,14 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      current: {},
       index: 0,
-
       volumen: 0,
       mute: false,
-      isPlaying: false,
-      audio: new Audio(),
       musicDuration: 0,
     }
   },
   computed: {
-    ...mapState(['canciones'])
+    ...mapState(['canciones', 'cancionActual', 'audio', 'isPlaying'])
   },
   methods: {
     mutear() {
@@ -68,16 +64,16 @@ export default {
     },
     play(song) {
       if (typeof song.src !== "undefined") {
-        this.current = song
+        this.$store.commit('llenarCancionActual', song)
 
-        this.audio.src = this.current.src
+        this.$store.commit('editAudioSrc', this.cancionActual.src)
       }
       this.audio.play()
-      this.isPlaying = true
+      this.$store.commit('cambiarPlayed')
     },
     pause() {
       this.audio.pause()
-      this.isPlaying = false
+      this.$store.commit('cambiarPlayed')
     },
     prev() {
       this.index --
@@ -85,18 +81,18 @@ export default {
         this.index = this.canciones.length - 1
       }
 
-      this.current = this.canciones[this.index]
-      this.play(this.current)
+      this.$store.commit('llenarCancionActual', this.canciones[this.index])
+      this.play(this.cancionActual)
     },
     next() {
       this.index ++
-      if (this.index > this.canciones.length) {
+      if (this.index >= this.canciones.length) {
         this.index = 0
       }
 
-      this.current = this.canciones[this.index]
-      this.play(this.current)
-    }
+      this.$store.commit('llenarCancionActual', this.canciones[this.index])
+      this.play(this.cancionActual)
+    },
   },
   watch: {
     volumen() {
@@ -105,8 +101,8 @@ export default {
   },
   created() {
     this.$store.dispatch('GetCanciones')
-    this.current = this.canciones[this.index],
-    this.audio.src = this.current.src
+    this.$store.commit('llenarCancionActual', this.canciones[this.index])
+    this.$store.commit('editAudioSrc', this.cancionActual.src)
     if (navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone') ) {
       this.volumen = 100
     }

@@ -3,7 +3,10 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     mostrarNav: false,
-    canciones : []
+    audio: new Audio(),
+    canciones : [],
+    cancionActual: {},
+    isPlaying: false,
   },
   mutations: {
     cambiarMotrarNav(state) {
@@ -11,7 +14,20 @@ export default createStore({
     },
     llenarCanciones(state, value) {
       state.canciones = value
-    }
+    },
+    llenarCancionActual(state, value) {
+      state.cancionActual = value
+    },
+    editAudioSrc(state, value) {
+      state.audio.src = value
+    },
+    cambiarPlayed(state) {
+      if (state.audio.paused) {
+        state.isPlaying = false
+      } else {
+        state.isPlaying = true
+      }
+    },
   },
   actions: {
     mostrarNavegacion({commit}) {
