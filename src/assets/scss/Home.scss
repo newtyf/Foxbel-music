@@ -10,22 +10,96 @@
     height: inherit;
     background-color: #fff;
     .main {
+      height: 90%;
       padding: 15px;
+      width: 100%;
       .banner-music {
-
+        display: flex;
+        width: 100%;
+        height: 40%;
+        min-height: 244px;
+        .imagen {
+          height: 100%;
+          width: 50%;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+        .inform_music {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          padding: 25px;
+          justify-content: space-between;
+          // background-image: url('https://i.ytimg.com/vi/nmZ4oB6ZD2U/sddefault.jpg');
+          background-color: rgba(231, 75, 75, 0.548);
+          background-repeat: no-repeat;
+          background-size: cover;
+          color: white;
+          @include mobile {
+            padding: 25px;
+          }
+          .singer {
+            margin-top: 20px;
+            @include mobile {
+              margin-top: 0;
+            }
+            .name {
+              font-weight: bold;
+              margin-bottom: 10px;
+            }
+            p {
+              margin-bottom: 10px;
+              .seguidores {
+                margin-left: 30px;
+                color: $secondary-color;
+                @include mobile {
+                  margin-left: 0;
+                }
+              }
+            }
+            .description {
+              font-size: 14px;
+              @include mobile {
+                display: none;
+              }
+            }
+          }
+          .options {
+            button {
+              margin-right: 20px;
+              @include mobile {
+                margin-bottom: 10px;
+                margin-right: 0px;
+              }
+            }
+          }
+        }
       }
-      .musicaCards {
-        overflow-y: scroll;
-        display: grid;
-        height: 70vh;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        grid-auto-rows: 250px;
-        grid-gap: 10px;
-        grid-auto-flow: row;
-        @include mobile {
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-          justify-items: center;
-          grid-gap: 0;
+      .resultados-content {
+        height: 60%;
+        .resultados {
+          margin-top: 10px;
+          font-weight: bold;
+          color: $primary-color;
+          height: 10%;
+        }
+        .musicaCards {
+          overflow-y: scroll;
+          display: grid;
+          height: 90%;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          grid-auto-rows: 250px;
+          grid-gap: 10px;
+          grid-auto-flow: row;
+          @include mobile {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            justify-items: center;
+            grid-auto-rows: 220px;
+            grid-gap: 0;
+          }
         }
       }
     }

@@ -6,10 +6,37 @@
         <SearchBar />
         <div class="main">
           <div class="banner-music">
-            
+            <div class="imagen">
+              <img :src="cancionActual.image" alt="">
+            </div>
+            <div class="inform_music">
+              <div class="singer">
+                <div class="name">{{cancionActual.singer}}</div>
+                <p>Lo mejor de {{cancionActual.singer}} <span class="seguidores">{{}} seguidores</span></p>
+                <p class="description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo voluptatum obcaecati quidem inventore nesciunt assumenda sunt, commodi quaerat asperiores vero! Modi et cumque fuga cum sequi, magnam dolores soluta minus.
+                </p>
+              </div>
+              <div class="options">
+                <button class="reproducir btn btn-pink">
+                  Reproducir
+                </button>
+                <button class="seguir btn btn-trans">
+                  Seguir
+                </button>
+                <div class="options-dots">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="musicaCards">
+          <div class="resultados-content">
+            <h2 class="resultados">RESULTADOS</h2>
+            <div class="musicaCards">
             <CardMusic v-for="(item,index) in canciones" :key="index" :data="item"/>
+          </div>
           </div>
         </div>
       </div>
@@ -36,7 +63,7 @@ export default {
     SearchBar
   },
   computed: {
-    ...mapState(['canciones'])
+    ...mapState(['canciones', 'cancionActual'])
   },
 }
 </script>

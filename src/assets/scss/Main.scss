@@ -4,3 +4,32 @@
   margin: 0;
   font-family: Quicksand;
 }
+
+button{
+  &.btn {
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 200ms ;
+    &.btn-trans {
+      border: 2px solid $secondary-color;
+      background-color: transparent;
+      color: $secondary-color;
+      &:hover {
+        color: white;
+        background-color: $secondary-color;
+      }
+    }
+    &.btn-pink {
+      border: 2px solid $primary-color;
+      background-color: $primary-color;
+      color: white;
+      &:hover {
+        color: $secondary-color;
+        background-color: transparent;
+      }
+    }
+  }
+}
