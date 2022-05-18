@@ -1,0 +1,38 @@
+#progreso {
+  width: 100%;
+  height: 8px;
+  position: absolute;
+  z-index: 999;
+  bottom: 12vh;
+  cursor: pointer;
+  @include mobile {
+    bottom: 10vh;
+  }
+  .barra {
+    background-color: $primary-color;
+    height: inherit;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    transition: all 200ms ease;
+    @include mobile {
+      background-color: $secondary-color;
+    }
+    .dot{
+      margin-right: -5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: $primary-color;
+      display: none;
+      @include mobile {
+        background-color: $secondary-color;
+      }
+    }
+  }
+  &:hover {
+    .dot {
+      display: block;
+    }
+  }
+}
