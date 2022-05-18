@@ -4,6 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include mobile-fold {
+    flex-direction: column;
+  }
   .cancion {
     height: inherit;
     display: flex;
@@ -11,6 +14,18 @@
     color: white;
     img {
       height: 100%;
+      width: 150px;
+      object-fit: cover;
+      @include mobile {
+        width: 90px;
+      }
+      @include mobile-fold {
+        width: 150px;
+      }
+    }
+    @include mobile-fold {
+      height: 50%;
+      width: 100%;
     }
     .cancion_titulo {
       height: inherit;
@@ -22,12 +37,28 @@
       .song {
         font-weight: bold;
       }
+      @include mobile {
+        font-size: 12px;
+        .song {
+          margin-bottom: 3px;
+        }
+        p {
+          width: auto;
+        }
+      }
     }
   }
   .controls {
     height: inherit;
     display: flex;
     align-items: center;
+    @include mobile {
+      margin-right: 15px;
+    }
+    @include mobile-fold {
+      height: 50%;
+      margin-right: 0
+    }
     div {
       display: flex;
       align-items: center;
@@ -40,28 +71,13 @@
       @include mobile {
         height: 40px;
         width: 40px;
-        margin: 0 10px;
-      }
-      &.fondo {
-        background-color: #FF7676;
       }
       img {
         height: 35px;
         cursor: pointer;
         @include mobile {
           height: 25px;
-          margin: 0 10px;
         }
-      }
-    }
-    @keyframes fondo {
-      0%{
-        background-color: #FF7676;
-        opacity:.0;
-      }
-      100%{
-        background-color: #FF7676;
-        opacity:0.8;
       }
     }
   }

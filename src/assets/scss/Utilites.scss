@@ -18,3 +18,9 @@ $desktop-width: 1200px;
       @content;
     }
 }
+
+@mixin mobile-fold {
+  @media (max-width: 300px) {
+    @content;
+  }
+}

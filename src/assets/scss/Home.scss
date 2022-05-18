@@ -12,7 +12,7 @@
     .main {
       padding: 15px;
       .banner-music {
-        
+
       }
     }
   }
@@ -48,5 +48,9 @@
   z-index: 100;
   @include mobile {
     height: 10vh;
+  }
+  @include mobile-fold {
+    flex-direction: column;
+    height: 40vh;
   }
 }
