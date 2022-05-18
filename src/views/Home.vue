@@ -41,7 +41,6 @@
         </div>
       </div>
     </div>
-    <ProgressBar />
     <Reproductor />
   </div>
 </template>
@@ -53,7 +52,6 @@ import Navbar from '@/components/NavBar.vue'
 import Reproductor from '@/components/Reproductor.vue'
 import CardMusic from '@/components/cardMusic.vue'
 import SearchBar from '@/components/SearchBar.vue'
-import ProgressBar from '@/components/ProgressBar.vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -63,10 +61,12 @@ export default {
     Reproductor,
     CardMusic,
     SearchBar,
-    ProgressBar
   },
   computed: {
     ...mapState(['canciones', 'cancionActual'])
   },
+  // created() {
+  //   this.$store.dispatch('loginInDezzer')
+  // }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div id="reproductor">
+    <ProgressBar @darPlay="play" />
     <div class="cancion">
       <img :src="cancionActual.image" alt="image of the singer">
       <div class="cancion_titulo">
@@ -35,16 +36,19 @@
 
 <script>
 import { mapState } from "vuex";
-
+import ProgressBar from '@/components/ProgressBar.vue'
 
 export default {
   data() {
     return {
-      index: 0,
+      index: 1,
       volumen: 0,
       mute: false,
       musicDuration: 0,
     }
+  },
+  components: {
+    ProgressBar
   },
   computed: {
     ...mapState(['canciones', 'cancionActual', 'audio', 'isPlaying'])
@@ -63,7 +67,7 @@ export default {
 
     },
     play(song) {
-      if (typeof song.src !== "undefined") {
+      if (typeof song !== "undefined" && typeof song.src !== "undefined") {
         this.$store.commit('llenarCancionActual', song)
 
         this.$store.commit('editAudioSrc', this.cancionActual.src)
@@ -113,7 +117,7 @@ export default {
     this.audio.volume = this.volumen/100
   },
   mounted() {
-    this.audio.onended = () => {alert('acabo la musica perro'); this.play = false}
+    this.audio.onended = () => {alert('acabo la musica perro'); this.$store.commit('cambiarPlayed'); this.prev()}
   },
 }
 </script>

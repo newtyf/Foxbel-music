@@ -28,8 +28,16 @@ export default createStore({
         state.isPlaying = true
       }
     },
+    editAudioCurrentTime(state, value) {
+      state.audio.currentTime = value
+    }
   },
   actions: {
+    // async loginInDezzer() {
+    //   await fetch('https://connect.deezer.com/oauth/auth.php?app_id=542542&redirect_uri=https://newtmusic.netlify.app/&perms=basic_access,email', {method: 'POST'})
+    //     .then((res) => {res.json(true)})
+    //     .then((data) => {console.log(data);})
+    // },
     mostrarNavegacion({commit}) {
       commit('cambiarMotrarNav')
     },

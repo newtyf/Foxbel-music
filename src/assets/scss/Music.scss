@@ -36,6 +36,9 @@
       object-fit: contain;
       width: 100%;
       height: 100%;
+      @include mobile {
+        height: 150px;
+      }
     }
     .play_image {
       height: 45px;

@@ -1,5 +1,5 @@
 <template>
-  <div id="progreso">
+  <div id="progreso" @click="jumpBar">
     <div class="barra" :style="{width: progress+'%'}"><div class="dot"></div></div>
   </div>
 </template>
@@ -15,9 +15,19 @@ export default {
   computed: {
     ...mapState(['audio'])
   },
+  methods: {
+    jumpBar(e) {
+      const progresoArea = document.getElementById('progreso').clientWidth
+      let clickOffSetX = e.offsetX
+      let songDuration = this.audio.duration
+
+      let newTime = (clickOffSetX/progresoArea) * songDuration
+      this.$store.commit('editAudioCurrentTime', newTime)
+      this.$emit('darPlay')
+    },
+  },
   mounted() {
     this.audio.addEventListener('timeupdate', (e) => {
-      console.log(e.path[0].duration);
       const duration = e.path[0].duration
       const current = e.path[0].currentTime
       this.progress = (current/duration) * 100
