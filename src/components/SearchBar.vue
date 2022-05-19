@@ -7,7 +7,7 @@
     </button>
     <div class="search-input">
       <div class="input">
-        <input type="text" placeholder="Buscar...">
+        <input type="text" placeholder="Buscar..."  v-model="textSearch" @keyup="searchMusic">
         <img src="@/assets/imgs/SearchBar/lupa.png" alt="Search">
       </div>
     </div>
@@ -26,11 +26,22 @@
 import {mapState, mapActions} from "vuex"
 
 export default {
+  data() {
+    return {
+      textSearch: ''
+    }
+  },
   computed: {
     ...mapState(['mostrarNav'])
   },
   methods: {
-    ...mapActions(['mostrarNavegacion'])
+    ...mapActions(['mostrarNavegacion', 'searchSpotifyMusic']),
+    searchMusic(event) {
+      if(event.keyCode == 13) {
+        this.searchSpotifyMusic(this.textSearch);
+        this.$emit('mostrarBusqueda')
+      }
+    }
   }
 }
 </script>

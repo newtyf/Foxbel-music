@@ -1,14 +1,14 @@
 <template>
   <nav id="navBar">
     <div id="nav" :class="{'selected' : mostrarNav}">
-    <div class="logo">
+    <div class="logo" @click="$emit('mostrarHome')">
       <img src="@/assets/foxbel-music.png" alt="" >
     </div>
     <nav class="navegacion">
       <div class="libreria">
         <h2>Mi libreria</h2>
         <ul>
-          <li><span></span> Recientes</li>
+          <li @click="$emit('mostrarRecientes')"><span></span> Recientes</li>
           <li><span></span> Artistas</li>
           <li><span></span> Album</li>
           <li><span></span> Canciones</li>
@@ -27,7 +27,6 @@
     </nav>
     </div>
     <div class="fondoNav" :class="{'mostrar' : mostrarNav}" @click="mostrarNavegacion">
-      
     </div>
   </nav>
 </template>

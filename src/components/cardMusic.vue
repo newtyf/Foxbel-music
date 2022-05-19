@@ -6,14 +6,14 @@
         <div class="dot"></div>
       </div>
       <div class="image" @click="playCardMusic">
-        <img :src="data.image" alt="">
-        <div class="play_image">
+        <img :src="data.artwork['150x150']" alt="">
+        <!-- <div class="play_image">
           <img src="@/assets/imgs/Reproductor/play-solid.svg" alt="">
-        </div>
+        </div> -->
       </div>
       <div class="titulo">
-        <p class="titulo_cancion"><b>{{data.song}}</b></p>
-        <p class="titulo_artista">{{data.singer}}</p>
+        <p class="titulo_cancion"><b>{{data.title}}</b></p>
+        <p class="titulo_artista">{{data.user.name}}</p>
       </div>
     </div>
 </template>
@@ -29,8 +29,13 @@ export default {
   },
   methods: {
     playCardMusic() {
+      this.$store.dispatch('getRecentMusic', this.data)
       this.$store.commit('llenarCancionActual', this.data)
-      this.$store.commit('editAudioSrc', this.data.src)
+      if (this.data.preview !== undefined) {
+        this.$store.commit('editAudioSrc', this.data.preview)
+      } else {
+        this.$store.commit('editAudioSrc', `https://blockdaemon-audius-discovery-06.bdnodes.net/v1/tracks/${this.data.id}/stream?app_name=NEWTAPP`)
+      }
       this.audio.play()
       this.$store.commit('cambiarPlayed')
     }

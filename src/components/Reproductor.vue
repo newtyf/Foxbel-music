@@ -2,10 +2,10 @@
   <div id="reproductor">
     <ProgressBar @darPlay="play" />
     <div class="cancion">
-      <img :src="cancionActual.image" alt="image of the singer">
+      <img :src="cancionActual.artwork['150x150']" alt="image of the singer">
       <div class="cancion_titulo">
-        <p class="song">{{cancionActual.song}}</p>
-        <p class="singer">{{cancionActual.singer}} - {{cancionActual.album}}</p>
+        <p class="song">{{cancionActual.title}}</p>
+        <p class="singer">{{cancionActual.user.name}} - {{cancionActual.title}}</p>
       </div>
     </div>
     <div class="controls">
@@ -67,10 +67,14 @@ export default {
 
     },
     play(song) {
-      if (typeof song !== "undefined" && typeof song.src !== "undefined") {
+      if (typeof song !== "undefined" && typeof song.preview !== "undefined") {
         this.$store.commit('llenarCancionActual', song)
-
-        this.$store.commit('editAudioSrc', this.cancionActual.src)
+        this.$store.commit('editAudioSrc', this.cancionActual.preview)
+      }
+      if (song != undefined) {
+        if (song.id !== undefined) {
+        this.$store.commit('editAudioSrc', `https://blockdaemon-audius-discovery-06.bdnodes.net/v1/tracks/${this.cancionActual.id}/stream?app_name=NEWTAPP`)
+      }
       }
       this.audio.play()
       this.$store.commit('cambiarPlayed')
@@ -104,9 +108,8 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('GetCanciones')
     this.$store.commit('llenarCancionActual', this.canciones[this.index])
-    this.$store.commit('editAudioSrc', this.cancionActual.src)
+    this.$store.commit('editAudioSrc', this.cancionActual.preview)
     if (navigator.userAgent.includes('Android') || navigator.userAgent.includes('iPhone') ) {
       this.volumen = 100
     }
@@ -117,7 +120,7 @@ export default {
     this.audio.volume = this.volumen/100
   },
   mounted() {
-    this.audio.onended = () => {alert('acabo la musica perro'); this.$store.commit('cambiarPlayed'); this.prev()}
+    this.audio.onended = () => {this.$store.commit('cambiarPlayed'); this.prev()}
   },
 }
 </script>
