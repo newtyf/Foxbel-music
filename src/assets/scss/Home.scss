@@ -20,15 +20,18 @@
         min-height: 244px;
         .imagen {
           height: 100%;
-          width: 50%;
+          width: 30%;
           img {
             height: 100%;
             width: 100%;
             object-fit: cover;
           }
+          @include mobile {
+            width: 60%;
+          }
         }
         .inform_music {
-          width: 50%;
+          width: 70%;
           display: flex;
           flex-direction: column;
           padding: 25px;
@@ -40,6 +43,7 @@
           color: white;
           @include mobile {
             padding: 25px;
+            width: 40%;
           }
           .singer {
             margin-top: 20px;

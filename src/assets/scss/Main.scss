@@ -13,6 +13,10 @@ button{
     font-weight: bold;
     cursor: pointer;
     transition: all 200ms ;
+    @include mobile {
+      width: 100px;
+    height: 40px;
+    }
     &.btn-trans {
       border: 2px solid $secondary-color;
       background-color: transparent;
