@@ -4,8 +4,8 @@
     <div class="cancion">
       <img :src="cancionActual.artwork['150x150']" alt="image of the singer">
       <div class="cancion_titulo">
-        <p class="song">{{cancionActual.title}}</p>
-        <p class="singer">{{cancionActual.user.name}} - {{cancionActual.title}}</p>
+        <p class="song">{{cortarTexto(cancionActual.title, 20)}}</p>
+        <p class="singer">{{cortarTexto(cancionActual.user.name, 10)}} - {{cortarTexto(cancionActual.title, 10)}}</p>
       </div>
     </div>
     <div class="controls">
@@ -100,6 +100,12 @@ export default {
 
       this.$store.commit('llenarCancionActual', this.canciones[this.index])
       this.play(this.cancionActual)
+    },
+    cortarTexto(value,numero){
+      if(value.length > numero) {
+          value = value.substr(0,numero)+"...";
+      }
+      return value
     },
   },
   watch: {

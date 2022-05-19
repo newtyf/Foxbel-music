@@ -12,7 +12,7 @@
         </div> -->
       </div>
       <div class="titulo">
-        <p class="titulo_cancion"><b>{{data.title}}</b></p>
+        <p class="titulo_cancion"><b>{{cortarTexto(data.title, 20)}}</b></p>
         <p class="titulo_artista">{{data.user.name}}</p>
       </div>
     </div>
@@ -38,7 +38,13 @@ export default {
       }
       this.audio.play()
       this.$store.commit('cambiarPlayed')
-    }
+    },
+    cortarTexto(value,numero){
+      if(value.length > numero) {
+          value = value.substr(0,numero)+"...";
+      }
+      return value
+    },
   }
 
 }
