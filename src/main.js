@@ -6,6 +6,6 @@ import wb from "./registerServiceWorker";
 
 // import './spotify'
 
-createApp(App).use(store).use(router).mount('#app')
-const app = createApp({})
+const app = createApp(App)
 app.config.globalProperties.$workbox = wb;
+app.use(store).use(router).mount('#app')
